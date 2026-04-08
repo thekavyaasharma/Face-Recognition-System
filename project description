@@ -1,0 +1,2 @@
+use tensorfloe : model components  and  deep learnings layers 
+model used : siamese neural network (one shot image recog /classification) pass 2 images and compare if its same 
