@@ -1,7 +1,28 @@
+# day 1 
+
 use tensorflow : model components  and  deep learnings layers 
 model used : siamese neural network (one shot image recog /classification) pass 2 images and compare if its same 
 using google colab 
+
+
 # day2: 
 unpack labelled faces in the wild 
 collect anchor image # using opencv webcam 
 collect positive image # using opencv webcam
+negative image # using labeled faces in wild data set open datset 
+
+
+
+
+                                SAME MODEL 
+anchor/  inp image (webcam) -> model encoding (converting into px to embeddings)   
+                                                                     \
+                                                                     -> distance layer  -> output 1 (verified)
+positive img                -> model encoding                        /
+
+
+
+anchor/  inp image (webcam) -> model encoding (converting into px to embeddings)   
+                                                                     \
+                                                                     -> distance layer(not same) -> output 0 ( not verified)
+Negative img                -> model encoding                        /
