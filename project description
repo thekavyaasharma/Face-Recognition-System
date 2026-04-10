@@ -1,3 +1,7 @@
-use tensorfloe : model components  and  deep learnings layers 
+use tensorflow : model components  and  deep learnings layers 
 model used : siamese neural network (one shot image recog /classification) pass 2 images and compare if its same 
 using google colab 
+# day2: 
+unpack labelled faces in the wild 
+collect anchor image 
+collect positive image 
