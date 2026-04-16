@@ -1,11 +1,11 @@
-# day 1 
+# 1
 
 use tensorflow : model components  and  deep learnings layers 
 model used : siamese neural network (one shot image recog /classification) pass 2 images and compare if its same 
 using google colab 
 
 
-# day2: 
+# 2: 
 unpack labelled faces in the wild 
 collect anchor image # using opencv webcam 
 collect positive image # using opencv webcam
@@ -28,7 +28,14 @@ anchor/  inp image (webcam) -> model encoding (converting into px to embeddings)
 Negative img                -> model encoding                        /
 
 
-# day 3 
+# 3 
 1. preprocess images 
 2. create +pos and -neg samples////// pos+anc -> model ////// neg+anc->model 
 3. load data into TF data loader (tensorflow data loader : allows to build pipelines makes dl model easier )
+
+
+#4
+start by building data translator = embedding layer to form feature mapping pipeline  
+    pass image -> emb layer( convert raw img to data  representation) -> model 
+create L1 distance layer 2 imgs -> comapre using l1 distance layer for similarity -> T/F
+compile simaese network 
