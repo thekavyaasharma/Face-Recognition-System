@@ -2,10 +2,11 @@
 
 use tensorflow : model components  and  deep learnings layers 
 model used : siamese neural network (one shot image recog /classification) pass 2 images and compare if its same 
-using google colab 
+ 
 
 
 # 2: 
+data used : lfw from kaggle 
 unpack labelled faces in the wild 
 collect anchor image # using opencv webcam 
 collect positive image # using opencv webcam
@@ -22,10 +23,18 @@ positive img                -> model encoding                        /
 
 
 
+
+
+
+
 anchor/  inp image (webcam) -> model encoding (converting into px to embeddings)   
                                                                      \
                                                                      -> distance layer(not same) -> output 0 ( not verified)
 Negative img                -> model encoding                        /
+
+
+
+
 
 
 # 3 
@@ -34,8 +43,19 @@ Negative img                -> model encoding                        /
 3. load data into TF data loader (tensorflow data loader : allows to build pipelines makes dl model easier )
 
 
+
+
 #4
 start by building data translator = embedding layer to form feature mapping pipeline  
     pass image -> emb layer( convert raw img to data  representation) -> model 
 create L1 distance layer 2 imgs -> comapre using l1 distance layer for similarity -> T/F
 compile simaese network 
+
+
+
+# 5 MODEL TRAINING 
+define loss function to cal error between actual and predicted 
+define optimiser to back propogate  the updated weights through neural nwk 
+build custom training step (to handle different types of inputs for advanced neural networks) for batches
+create a training loop 
+train the model 
