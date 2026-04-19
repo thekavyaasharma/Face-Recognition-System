@@ -1,6 +1,7 @@
 # 1
 
 use tensorflow : model components  and  deep learnings layers 
+tensorflow  graph : key component bec tensowflow works using a graph it compiles entire neural network into a graph 
 model used : siamese neural network (one shot image recog /classification) pass 2 images and compare if its same 
  
 
@@ -57,5 +58,13 @@ compile simaese network
 define loss function to cal error between actual and predicted 
 define optimiser to back propogate  the updated weights through neural nwk 
 build custom training step (to handle different types of inputs for advanced neural networks) for batches
+
+basic flow for training one batch :
+1. make prediction 
+2. calculate loss 
+3. derive gradients 
+4. calculate new weights and apply 
+
+
 create a training loop 
 train the model 
