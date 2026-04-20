@@ -2,3 +2,4 @@
 .ipynb_checkpoints/
 data/anchor/
 data/positive/
+training_checkpoints/
