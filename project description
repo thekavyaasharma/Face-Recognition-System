@@ -68,3 +68,11 @@ basic flow for training one batch :
 
 create a training loop 
 train the model 
+
+
+
+
+
+# 6 TEST THE MODEL
+Evaluate model performance using f1 score and recall
+save the model for deployment
