@@ -77,3 +77,14 @@ train the model
 make predictions : then convert confidence matriix to 0 or 1 vals using 0.5 threshold 
 Evaluate model performance using f1 score and recall
 save the model for deployment
+
+
+
+
+
+# 7 Real time predictions 
+>> set up images that can be used  for verification :
+    this will have 2 folders - positive verif images , negative verif images 
+
+>> build verify fxn : loop through all images and compare it to input from webcam (similar to face id on iphones)
+>> perform recognition in real time :using opencv to perform real-time facial verification 
