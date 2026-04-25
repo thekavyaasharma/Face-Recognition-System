@@ -4,3 +4,4 @@ data/anchor/
 data/positive/
 training_checkpoints/
 siameseModel.h5/
+application_data/
