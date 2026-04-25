@@ -74,9 +74,9 @@ train the model
 
 
 # 6 TEST THE MODEL
-make predictions : then convert confidence matriix to 0 or 1 vals using 0.5 threshold 
-Evaluate model performance using f1 score and recall
-save the model for deployment
+>> make predictions : then convert confidence matriix to 0 or 1 vals using 0.5 threshold 
+>> Evaluate model performance using f1 score and recall
+>> save the model for deployment
 
 
 
@@ -84,7 +84,32 @@ save the model for deployment
 
 # 7 Real time predictions 
 >> set up images that can be used  for verification :
-    this will have 2 folders - positive verif images , negative verif images 
+    application_data {this will have 2 folders} - positive verif images , negative verif images 
 
 >> build verify fxn : loop through all images and compare it to input from webcam (similar to face id on iphones)
+
+
+
+
+WEBCAM (using opencv)  -> retrieve input image -> folder/positives(50 images) {this will perform 50 different verification cycle} 1 full cyclwe = 50 predictions
+
+
+
+            input image 
+                    \
+                     -> distance layer(neural network) -> [0-1] ->use detection threshold fxn -> output 0 or 1 
+                   /
+            positive images 
+
+verification threshold fxn: 0.5 {x > 0.5 -> 1 else 0 }
+implement detection threshold  30 images pass 0.5 threshold = 30/50
+                    
+
+
+
+
 >> perform recognition in real time :using opencv to perform real-time facial verification 
+
+
+
+webc
