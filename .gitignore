@@ -3,5 +3,6 @@
 data/anchor/
 data/positive/
 training_checkpoints/
-siameseModel.h5/
+siameseModel.h5
 application_data/
+Facial Recognition app/application_data/
