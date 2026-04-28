@@ -111,5 +111,7 @@ implement detection threshold  30 images pass 0.5 threshold = 30/50
 >> perform recognition in real time :using opencv to perform real-time facial verification 
 
 
-
-webc
+# 8 FACE RECOGNITION APPLICATION using kivy framework
+>> kivy : open source framework that allows to build apps with python 
+>> build face recog app 
+>> integrate with tensorflow model 
