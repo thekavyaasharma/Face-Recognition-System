@@ -26,10 +26,20 @@ class CamApp(App): #inheritence
 
     def build(self):
 
-        # main layout components
+        # define main layout components
         self.img1 = Image(size_hint=(1,0.8)) # main input image
         self.button = Button(text='Verify', size_hint=(1,0.1))
         self.verification = Label(text = 'verification un-initiated', size_hint=(1,0.1))
+
+        # add components and test the layout 
+        layout = BoxLayout(orientation = 'vertical')
+        layout.add_widget(self.img1)
+        layout.add_widget(self.button)
+        layout.add_widget(self.verification)
+
+
+
+        return layout
 
 if __name__ == '__main__':
     CamApp().run()
