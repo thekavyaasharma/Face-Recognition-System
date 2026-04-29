@@ -21,5 +21,12 @@ import os
 import numpy as np 
 
 
-# Build out the app layout 
+# Build the app layout 
+class CamApp(App):
+
+    def build(self):
+        pass
+
+if __name__ == '__main__':
+    CamApp.run()
 
