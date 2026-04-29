@@ -28,5 +28,5 @@ class CamApp(App):
         pass
 
 if __name__ == '__main__':
-    CampApp.run()
+    CamApp.run()
 
