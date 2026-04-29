@@ -6,3 +6,4 @@ training_checkpoints/
 Facial Recognition app/siameseModel.h5
 application_data/
 Facial Recognition app/application_data/
+Facial Recognition app/__pycache__/
