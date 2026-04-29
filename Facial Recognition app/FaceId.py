@@ -22,11 +22,15 @@ import numpy as np
 
 
 # Build the app layout 
-class CamApp(App):
+class CamApp(App): #inheritence 
 
     def build(self):
-        pass
+
+        # main layout components
+        self.img1 = Image(size_hint=(1,0.8)) # main input image
+        self.button = Button(text='Verify', size_hint=(1,0.1))
+        self.verification = Label(text = 'verification un-initiated', size_hint=(1,0.1))
 
 if __name__ == '__main__':
-    CamApp.run()
+    CamApp().run()
 
