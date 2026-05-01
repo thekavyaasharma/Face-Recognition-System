@@ -37,9 +37,18 @@ class CamApp(App): #inheritence
         layout.add_widget(self.button)
         layout.add_widget(self.verification)
 
+        #setup video capture  device
+        self.capture = cv2.VideoCapture(0)
 
 
         return layout
+
+
+    #run continuously to get webcam feed
+    def update(self,*args):
+
+
+
 
 if __name__ == '__main__':
     CamApp().run()
