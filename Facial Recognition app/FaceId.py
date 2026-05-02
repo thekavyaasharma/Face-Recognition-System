@@ -40,6 +40,9 @@ class CamApp(App): #inheritence
         #setup video capture  device
         self.capture = cv2.VideoCapture(0)
 
+        # real time feed
+        Clock.schedule_interval(self.update, 1.0/33.0)
+
 
         return layout
 
@@ -49,14 +52,19 @@ class CamApp(App): #inheritence
 
         #read frame(numpy array)from opencv
         ret , frame = self.capture.read()
-        frame = [120:120+250, 200:200+250, :]
+        frame = [120:120+250, 200:200+250]
 
         # flip horizontal and convert image to texture
         buf = cv2.flip(frame,0).tostring() # flip image horizlly -> cnvrt to string
         img_texture = Texture.create(size=(frame.shape[1], frame.shape[0]), colorfmt = 'bgr')
+        
         # img -> convert it into texture -> rencer it inside app
         img_texture.blit_buffer(buf, colorfmt ='bgr', bufferfmt = 'ubyte')
+
+        #converting raw opencv image -> array to a texture for rendering -> set image = that texture
         self.web_cam.texture = img_texture
+
+
 
 
 
