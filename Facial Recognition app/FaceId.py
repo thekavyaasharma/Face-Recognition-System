@@ -39,6 +39,7 @@ class CamApp(App): #inheritence
 
         #setup video capture  device
         self.capture = cv2.VideoCapture(0)
+
         # real time feed
         Clock.schedule_interval(self.update, 1.0/33.0)
 
@@ -51,7 +52,7 @@ class CamApp(App): #inheritence
 
         #read frame(numpy array)from opencv
         ret , frame = self.capture.read()
-        frame = [120:120+250, 200:200+250, :]
+        frame = [120:120+250, 200:200+250]
 
         # flip horizontal and convert image to texture
         buf = cv2.flip(frame,0).tostring() # flip image horizlly -> cnvrt to string
