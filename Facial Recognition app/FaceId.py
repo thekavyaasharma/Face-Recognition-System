@@ -56,6 +56,7 @@ class CamApp(App): #inheritence
 
         # flip horizontal and convert image to texture
         buf = cv2.flip(frame,0).tostring() # flip image horizlly -> cnvrt to string
+        
         img_texture = Texture.create(size=(frame.shape[1], frame.shape[0]), colorfmt = 'bgr')
         
         # img -> convert it into texture -> rencer it inside app
