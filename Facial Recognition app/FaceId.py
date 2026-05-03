@@ -65,10 +65,10 @@ class CamApp(App): #inheritence
         self.web_cam.texture = img_texture
 
 
-    #before passing img to model preprocess it 
+    #before passing img to model preprocess it Bring preprocess fxn from FCR.ipynb
 
     # Load image from file then convert it into 100px, 100px
-    def preprocess(file_path):
+    def preprocess(self, file_path):
         byte_img = tf.io.read_file(file_path)  # read img using file path treeated using bytes like obj 
         img = tf.io.decode_jpeg(byte_img)          # decode jpeg -> load img 
         
@@ -77,7 +77,41 @@ class CamApp(App): #inheritence
         return img
 
 
-    #
+    # Bring verifrication fxn from FCR.ipynb to verify person 
+    # 4 args :  siameseNN , metric above which pred is considered +ve class, ratio of +ve pred over total +ve samples(30/50)
+    
+    def verify(self, *args):
+
+        # specify thresholds 
+        detection_threshold = 0.5
+        verification_threshold = 0.5
+
+        # capture img from webcam
+        SAVE_PATH = os.path.join('application_data', 'input_image', 'input_image.jpg')
+        ret, frame = self.capture.read()
+        frame = frame[120:120+250, 200:200+250, :]
+        cv2.imwrite(SAVE_PATH, frame)
+
+        # build results array: store results in array
+        results = []
+
+        # loop through every 50 images in verif folder (full cycle loop)
+        for image in os.listdir(os.path.join('application_data','verification_images')):
+            input_img = self.preprocess(os.path.join('application_data','input_image', 'input_image.jpg')) # loads image -> resive -> convert pcx to no
+            validation_img = self.preprocess(os.path.join('application_data','verification_images', image)) # same for valid image
+
+            # make pred 
+            result = model.predict(list(np.expand_dims([input_img, validation_img], axis=1)))
+            results.append(result)
+
+        detection =  np.sum(np.array(results)>detection_threshold)
+        
+        verification = detection / len(os.listdir(os.path.join('application_data','verification_images')))
+        verified = verification > verification_threshold 
+
+        return results , verified
+    
+    
 
 
 
