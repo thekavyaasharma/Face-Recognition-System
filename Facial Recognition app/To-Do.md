@@ -11,7 +11,7 @@
 
 6. Import dependencies for kivy
 7. Build layout
-8. Build update function
+8. Build update function and render webcam 
 9. Bring over pre-process fxn
 
 10. Bring over verification fxn
