@@ -52,22 +52,32 @@ class CamApp(App): #inheritence
 
         #read frame(numpy array)from opencv
         ret , frame = self.capture.read()
-        frame = [120:120+250, 200:200+250]
+        frame = frame[120:120+250, 200:200+250,:]
 
         # flip horizontal and convert image to texture
-        buf = cv2.flip(frame,0).tostring() # flip image horizlly -> cnvrt to string
-        
+        buf = cv2.flip(frame,0).tobytes() # flip image horizlly 
         img_texture = Texture.create(size=(frame.shape[1], frame.shape[0]), colorfmt = 'bgr')
         
         # img -> convert it into texture -> rencer it inside app
         img_texture.blit_buffer(buf, colorfmt ='bgr', bufferfmt = 'ubyte')
 
-        #converting raw opencv image -> array to a texture for rendering -> set image = that texture
+        #converting raw opencv image -> array to a texture for rendering -> setting image equal that texture
         self.web_cam.texture = img_texture
 
 
+    #before passing img to model preprocess it 
+
+    # Load image from file then convert it into 100px, 100px
+    def preprocess(file_path):
+        byte_img = tf.io.read_file(file_path)  # read img using file path treeated using bytes like obj 
+        img = tf.io.decode_jpeg(byte_img)          # decode jpeg -> load img 
+        
+        img = tf.image.resize(img,(100,100))    # resize img -> preprocessing (100px, 100px, 3 channels) as per paper 
+        img = img / 255.0              # divide it by 255 so it performs scaling and it returnns the image 0-1
+        return img
 
 
+    #
 
 
 
