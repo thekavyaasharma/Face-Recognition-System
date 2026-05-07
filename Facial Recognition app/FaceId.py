@@ -28,7 +28,7 @@ class CamApp(App): #inheritence
 
         # define main layout components
         self.web_cam = Image(size_hint=(1,0.8)) # main input image
-        self.button = Button(text='Verify', size_hint=(1,0.1))
+        self.button = Button(text='Verify',on_press=self.verify, size_hint=(1,0.1))
         self.verification_label = Label(text = 'verification un-initiated', size_hint=(1,0.1))
 
         # add components and test the layout 
@@ -113,7 +113,7 @@ class CamApp(App): #inheritence
         verified = verification > verification_threshold 
 
         # set verification text 
-        self.verification.text = "Successfully Verified!" if verification == True else "Failed to Verify! Try Again."
+        self.verification_label.text = "Successfully Verified!" if verification == True else "Failed to Verify! Try Again."
 
         return results , verified
     
