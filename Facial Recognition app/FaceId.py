@@ -16,7 +16,7 @@ from kivy.logger import Logger # to see how app performs
 # import other required dependencies : tf , cv 
 import cv2
 import tensorflow as tf
-import layers as L1Dist # import layer.py
+from layers import L1Dist # import layer.py
 import os 
 import numpy as np 
 
@@ -28,14 +28,17 @@ class CamApp(App): #inheritence
 
         # define main layout components
         self.web_cam = Image(size_hint=(1,0.8)) # main input image
-        self.button = Button(text='Verify', size_hint=(1,0.1))
-        self.verification = Label(text = 'verification un-initiated', size_hint=(1,0.1))
+        self.button = Button(text='Verify',on_press=self.verify, size_hint=(1,0.1))
+        self.verification_label = Label(text = 'Click the verify button to mark attendance.', size_hint=(1,0.1))
 
         # add components and test the layout 
         layout = BoxLayout(orientation = 'vertical')
         layout.add_widget(self.web_cam)
         layout.add_widget(self.button)
-        layout.add_widget(self.verification)
+        layout.add_widget(self.verification_label)
+
+        #Load keras siamese model 
+        self.model = tf.keras.models.load_model('siameseModel.h5', custom_objects={'L1Dist':L1Dist})
 
         #setup video capture  device
         self.capture = cv2.VideoCapture(0)
@@ -101,13 +104,16 @@ class CamApp(App): #inheritence
             validation_img = self.preprocess(os.path.join('application_data','verification_images', image)) # same for valid image
 
             # make pred 
-            result = model.predict(list(np.expand_dims([input_img, validation_img], axis=1)))
+            result = self.model.predict(list(np.expand_dims([input_img, validation_img], axis=1)))
             results.append(result)
 
         detection =  np.sum(np.array(results)>detection_threshold)
         
         verification = detection / len(os.listdir(os.path.join('application_data','verification_images')))
         verified = verification > verification_threshold 
+
+        # set verification text 
+        self.verification_label.text = "Successfully Verified!" if verified == True else "Failed to Verify! Try Again."
 
         return results , verified
     
