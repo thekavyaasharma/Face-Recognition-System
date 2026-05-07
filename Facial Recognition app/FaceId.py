@@ -37,6 +37,9 @@ class CamApp(App): #inheritence
         layout.add_widget(self.button)
         layout.add_widget(self.verification)
 
+        #Load keras siamese model 
+        self.model = tf.keras.models.load_model('siameseModel.h5', custom_objects={'L1Dist':L1Dist})
+
         #setup video capture  device
         self.capture = cv2.VideoCapture(0)
 
@@ -101,7 +104,7 @@ class CamApp(App): #inheritence
             validation_img = self.preprocess(os.path.join('application_data','verification_images', image)) # same for valid image
 
             # make pred 
-            result = model.predict(list(np.expand_dims([input_img, validation_img], axis=1)))
+            result = self.model.predict(list(np.expand_dims([input_img, validation_img], axis=1)))
             results.append(result)
 
         detection =  np.sum(np.array(results)>detection_threshold)
