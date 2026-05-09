@@ -115,6 +115,14 @@ class CamApp(App): #inheritence
         # set verification text 
         self.verification_label.text = "Successfully Verified!" if verified == True else "Failed to Verify! Try Again."
 
+        # Log out details 
+        Logger.info(results)
+        Logger.info(np.sum(np.array(results) > 0.2))
+        Logger.info(np.sum(np.array(results) > 0.3))
+        Logger.info(np.sum(np.array(results) > 0.4))
+        Logger.info(np.sum(np.array(results) > 0.5))
+
+
         return results , verified
     
     
