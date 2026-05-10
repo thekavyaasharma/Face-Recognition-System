@@ -86,7 +86,7 @@ class CamApp(App): #inheritence
     def verify(self, *args):
 
         # specify thresholds 
-        detection_threshold = 0.5
+        detection_threshold = 0.8
         verification_threshold = 0.5
 
         # capture img from webcam
@@ -117,6 +117,9 @@ class CamApp(App): #inheritence
 
         # Log out details 
         Logger.info(results)
+        Logger.info(detection)
+        Logger.info(verification)
+        Logger.info(verified)
         Logger.info(np.sum(np.array(results) > 0.2))
         Logger.info(np.sum(np.array(results) > 0.3))
         Logger.info(np.sum(np.array(results) > 0.4))
