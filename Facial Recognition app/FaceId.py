@@ -38,7 +38,7 @@ class CamApp(App): #inheritence
         layout.add_widget(self.verification_label)
 
         #Load keras siamese model 
-        self.model = tf.keras.models.load_model('siameseModel.h5', custom_objects={'L1Dist':L1Dist})
+        self.model = tf.keras.models.load_model('siameseModelv2.h5', custom_objects={'L1Dist':L1Dist})
 
         #setup video capture  device
         self.capture = cv2.VideoCapture(0)
@@ -86,8 +86,8 @@ class CamApp(App): #inheritence
     def verify(self, *args):
 
         # specify thresholds 
-        detection_threshold = 0.8
-        verification_threshold = 0.5
+        detection_threshold = 0.99
+        verification_threshold = 0.8
 
         # capture img from webcam
         SAVE_PATH = os.path.join('application_data', 'input_image', 'input_image.jpg')
