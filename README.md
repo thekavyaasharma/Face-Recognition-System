@@ -1,14 +1,3 @@
-<div align="center">
-
-<br/>
-
-```
-__   __ ___ ____  ___ _______   ___   _ _____ _____ 
-\ \ / // __| _ \|_ _| __\ \ / / \  | | __|_   _|
- \ V /| _||   / | || _| \ V /| |) | | _|  | |  
-  \_/ |___|_|_\|___|_|   \_/ |___/ |_|___| |_|  
-```
-
 # 🔐 VerifyNet — Biometric Identity Verification System
 
 ### *A high-security biometric authentication engine powered by Deep Learning*
@@ -74,14 +63,6 @@ This project was built end-to-end: from raw data collection and preprocessing, t
 | 📊 **F1 + Recall Evaluation** | Robust performance measurement for biometric contexts |
 | 💾 **Model Persistence** | Trained model saved and reloaded for deployment |
 | 🖥️ **Kivy Desktop App** | Clean cross-platform UI for real-world deployment |
-
----
-
-## 🏗️ System Architecture
-
-```
-
-```
 
 ---
 
